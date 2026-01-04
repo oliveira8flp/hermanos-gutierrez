@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Heads = () => {
     return (
-        <section className="gap-2 flex z-99 w-[100%]">
+        <section className="gap-2 flex z-99 w-[100%] h-[40vh] justify-center items-center">
             <div className="flex justify-end items-center w-[52%]">
                 <h2 className ="text-white font-paquito">scroll down</h2>
             </div>
