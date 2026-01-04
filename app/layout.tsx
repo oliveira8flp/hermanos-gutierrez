@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
     <body className={`${Bungee_Font.variable} ${Paquito_Medium.variable} antialiased`}>
     <Navbar />
-    <main className="h-[100vh]">
+    <main className=" h-[100vh] w-[100%]">
         {children}
     </main>
     </body>
