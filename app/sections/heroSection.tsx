@@ -26,7 +26,7 @@ const HeroSection = () => {
                 start: "top top",
                 end: "+=1000",
                 pin: ".animated-video",
-                scrub:1,
+                scrub: true,
                 markers: true,
                 /* once: true,  This is supposed to stop the scaling animation, but it's not working properly */
             },
