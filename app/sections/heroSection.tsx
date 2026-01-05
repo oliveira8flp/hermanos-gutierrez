@@ -36,7 +36,7 @@ const HeroSection = () => {
         <section ref ={mainContainer} className="Banner1 relative bg-[#F5EBD0] w-[100vw] h-[250vh]">
             <div className ="animated-video z-100 flex-wrap relative flex w-full h-screen justify-start items-start">
                 <Navbar />
-                <YoutubeBackground videoId="bTiu9nfgGys"/>
+                <YoutubeBackground absoluteDiv="absolute" absolute = "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" opacityOverlay="bg-black/80" videoId="bTiu9nfgGys" width="w-[300%]" height="h-[300%]" lg_width="lg:w-[150%]" lg_height="lg:h-[150%]"/>
                 <Hero dropShadow="drop-shadow-[-4px_6px_0px_rgba(252,211,77,1)]" text="Can you hear the Sonido?" width="w-[60vw]" color = "text-white"/>
                 <Heads/>
             </div>
