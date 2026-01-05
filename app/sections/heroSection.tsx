@@ -33,7 +33,7 @@ const HeroSection = () => {
         })
     }, {scope: mainContainer})
     return (
-        <section ref ={mainContainer} className="Banner1 relative bg-amber-50 w-[100vw] h-[250vh]">
+        <section ref ={mainContainer} className="Banner1 relative bg-[#F5EBD0] w-[100vw] h-[250vh]">
             <div className ="animated-video z-100 flex-wrap relative flex w-full h-screen justify-start items-start">
                 <Navbar />
                 <YoutubeBackground videoId="bTiu9nfgGys"/>
