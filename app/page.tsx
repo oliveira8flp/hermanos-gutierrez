@@ -1,9 +1,9 @@
-import HeroSection from "@/app/sections/heroSection";
-import NextTour from "@/app/sections/nextTour";
-import PhotoSection from "@/app/sections/photoSection";
-import OurLatest from "@/app/sections/ourLatest";
-import InTheMedia from "@/app/sections/inTheMedia";
-import OurSocials from "@/app/sections/ourSocials";
+import HeroSection from "@/app/(Home)/_sections/heroSection";
+import NextTour from "@/app/(Home)/_sections/nextTour";
+import PhotoSection from "@/app/(Home)/_sections/photoSection";
+import OurLatest from "@/app/(Home)/_sections/ourLatest";
+import InTheMedia from "@/app/(Home)/_sections/inTheMedia";
+import OurSocials from "@/app/(Home)/_sections/ourSocials";
 
 export default function Home() {
 

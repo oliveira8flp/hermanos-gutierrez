@@ -4,11 +4,11 @@ import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import YoutubeBackground from "@/app/components/youtubeBackground";
-import Hero from "@/app/components/hero";
-import Heads from "@/app/components/heads";
+import YoutubeBackground from "@/app/_components/youtubeBackground";
+import Hero from "@/app/_components/hero";
+import Heads from "@/app/_components/heads";
 import {useRef} from "react"
-import Navbar from "@/app/components/navbar";
+import Navbar from "@/app/_components/navbar";
 
 const HeroSection = () => {
 

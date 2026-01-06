@@ -1,6 +1,6 @@
-import Hero from "@/app/components/hero";
+import Hero from "@/app/_components/hero";
 import Image from "next/image";
-import Button from "@/app/components/button";
+import Button from "@/app/_components/button";
 
 const NextTour = () => {
     return (

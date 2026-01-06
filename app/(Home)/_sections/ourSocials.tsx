@@ -1,4 +1,4 @@
-import Hero from "@/app/components/hero";
+import Hero from "@/app/_components/hero";
 import Image from "next/image";
 
 const OurSocials = () => {
