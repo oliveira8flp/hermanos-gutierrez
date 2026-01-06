@@ -28,8 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={`${Bungee_Font.variable} ${Paquito_Medium.variable} antialiased overflow-x-hidden p-0 m-0 box-border`}>
-    <main className=" h-[100vh] w-[100%]">
+    <body className={`${Bungee_Font.variable} ${Paquito_Medium.variable} antialiased p-0 m-0 box-border`}>
+    <main className=" w-[100%]">
         <BlackNavBar/>
         {children}
         <Footer />
