@@ -28,12 +28,11 @@ const HeroSection = () => {
                 pin: ".animated-video",
                 scrub: true,
                 markers: true,
-                /* once: true,  This is supposed to stop the scaling animation, but it's not working properly */
             },
         })
     }, {scope: mainContainer})
     return (
-        <section ref ={mainContainer} className="Banner1 relative bg-[#F5EBD0] w-[100vw] h-[250vh]">
+        <section ref ={mainContainer} className="Banner1 relative bg-[#000000] w-[100vw] h-[220vh]">
             <div className ="animated-video z-100 flex-wrap relative flex w-full h-screen justify-start items-start">
                 <Navbar />
                 <YoutubeBackground absoluteDiv="absolute" absolute = "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" opacityOverlay="bg-black/80" videoId="bTiu9nfgGys" width="w-[300%]" height="h-[300%]" lg_width="lg:w-[150%]" lg_height="lg:h-[150%]"/>

@@ -13,13 +13,13 @@ interface Props {
 const YoutubeBackground = ({videoId, opacityOverlay, width, height, lg_width, lg_height, absolute, absoluteDiv}: Props) =>
 {
     return (
-        <div className={`${absoluteDiv} inset-0 z-0 overflow-hidden pointer-events-none`}>
+        <div className={`${absoluteDiv} p-0 m-0 inset-0 z-0 overflow-hidden pointer-events-none`}>
             <iframe
                 className={`${absolute} ${height} ${width} ${lg_width} ${lg_height}`}
                 src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
                 allow="autoplay; encrypted-media">
             </iframe>
-            <div className ={`absolute inset-0 ${opacityOverlay}`}></div>
+            <div className ={`absolute p-0 m-0 w-full h-full inset-0 ${opacityOverlay}`}></div>
         </div>
     )
 

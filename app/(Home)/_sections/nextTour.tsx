@@ -4,7 +4,7 @@ import Button from "@/app/_components/button";
 
 const NextTour = () => {
     return (
-        <section className="Banner2 flex-wrap flex relative bg-[#F5EBD0] w-[100vw] h-[130vh]">
+        <section className="Banner2 flex-wrap flex relative bg-[#F5EBD0] w-[100vw] h-[130vh] pt-48">
             <div className="banner2left w-[49%] flex flex-col justify-center items-center">
                 <Image src="/images/banner2.png" alt="South America Tour 2026" width={500} height={500}></Image>
                 <h2 className = "text-left w-[66%] font-paquito">art by @perryshall</h2>

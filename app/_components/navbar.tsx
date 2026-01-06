@@ -15,18 +15,25 @@ const Navbar = () => {
     useGSAP(()=>{
         const showAnim = gsap.from(navRef.current, {
             yPercent: -100,
+            autoAlpha:0,
             paused: true,
             duration: 0.3,
-        }).progress(1);
+        });
 
         ScrollTrigger.create({
             start: "top top",
             end:"max",
             onUpdate: (self) => {
-                if(self.direction === 1){
-                    showAnim.reverse();
+                const scrollThreshold = 200;
+
+                if(self.scroll() > scrollThreshold){
+                    if(self.direction === 1){
+                        showAnim.reverse();
+                    } else{
+                        showAnim.play();
+                    }
                 } else{
-                    showAnim.play();
+                    showAnim.reverse();
                 }
             }
         })
@@ -36,7 +43,7 @@ const Navbar = () => {
 
 
     return (
-        <nav ref={navRef} className="Navbar gap-2 w-[100%] flex justify-center items-center fixed z-101 navbar navbar-expand-lg pt-5">
+        <nav ref={navRef} className="Navbar gap-2 w-[100%] flex justify-center items-center fixed top-0 left-0 z-101 navbar navbar-expand-lg pt-5">
                 <h2 className ="text-white font-paquito text-2xl">MENU</h2>
                 <Image src="/images/white-thunderbird.png" alt="logo hermanos gutierrez" width={100} height={100}></Image>
         </nav>
