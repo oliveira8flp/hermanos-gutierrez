@@ -13,29 +13,44 @@ import Navbar from "@/app/_components/navbar";
 const HeroSection = () => {
 
     const mainContainer = useRef<HTMLDivElement>(null);
-    const innerHeight = window.innerHeight;
+    const videoRef = useRef<HTMLDivElement>(null)
 
     useGSAP(() =>{
-        gsap.fromTo(".animated-video", {
+        const innerHeight = window.innerHeight;
+
+        const tl = gsap.timeline({paused:true});
+
+        if(!mainContainer.current || !videoRef.current){return}
+
+        tl.fromTo(videoRef.current, {
             scale: 0.2,
             autoAlpha: 1,
         }, {
             scale: 1,
             autoAlpha: 1,
-            scrollTrigger:{
-                trigger: ".Banner1",
-                start: "top top",
-                end: `${innerHeight}`,
-                pin: true,
-                scrub: true,
-                markers: true,
-            },
+            ease: "none",
+            duration: 1500,
         })
+
+        ScrollTrigger.create({
+                trigger: mainContainer.current,
+                start: "top top",
+                end: "+=100%",
+                pin: true,
+                markers: true,
+                onUpdate: (self)=>{
+                    if(self.progress > tl.progress()){
+                        tl.progress(self.progress);
+                    }
+                }
+        });
+
     }, {scope: mainContainer})
+
     return (
-        <div ref ={mainContainer} className="h-full w-full relative">
-            <section  className="Banner1 relative z-102 bg-[#000000] w-[100vw] h-[100vh]">
-                <div className ="animated-video flex-wrap relative flex w-full h-screen justify-start items-start">
+        <div ref ={mainContainer} className="h-full w-full z-102 relative">
+            <section  className="Banner1 relative bg-[#000000] w-[100vw] h-[100vh]">
+                <div ref ={videoRef} className ="animated-video flex-wrap relative flex w-full h-screen justify-start items-start">
                     <Navbar />
                     <YoutubeBackground absoluteDiv="absolute" absolute = "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" opacityOverlay="bg-black/80" videoId="bTiu9nfgGys" width="w-[300%]" height="h-[300%]" lg_width="lg:w-[150%]" lg_height="lg:h-[150%]"/>
                     <Hero dropShadow="drop-shadow-[-4px_6px_0px_rgba(252,211,77,1)]" text="Can you hear the Sonido?" width="w-[60vw]" color = "text-white"/>
