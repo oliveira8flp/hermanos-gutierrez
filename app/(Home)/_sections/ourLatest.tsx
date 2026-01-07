@@ -1,6 +1,6 @@
-import Hero from "@/app/components/hero";
-import YoutubeBackground from "@/app/components/youtubeBackground";
-import Button from "@/app/components/button";
+import Hero from "@/app/_components/hero";
+import YoutubeBackground from "@/app/_components/youtubeBackground";
+import Button from "@/app/_components/button";
 
 const OurLatest = () => {
     return (
