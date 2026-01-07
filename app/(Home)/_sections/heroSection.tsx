@@ -13,6 +13,7 @@ import Navbar from "@/app/_components/navbar";
 const HeroSection = () => {
 
     const mainContainer = useRef<HTMLDivElement>(null);
+    const innerHeight = window.innerHeight;
 
     useGSAP(() =>{
         gsap.fromTo(".animated-video", {
@@ -24,7 +25,7 @@ const HeroSection = () => {
             scrollTrigger:{
                 trigger: ".Banner1",
                 start: "top top",
-                end: "+=1500",
+                end: `${innerHeight}`,
                 pin: true,
                 scrub: true,
                 markers: true,
