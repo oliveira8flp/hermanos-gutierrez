@@ -29,7 +29,6 @@ const HeroSection = () => {
             scale: 1,
             autoAlpha: 1,
             ease: "none",
-            duration: 1500,
         })
 
         ScrollTrigger.create({
