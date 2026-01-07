@@ -57,7 +57,8 @@ const Navbar = () => {
 
     useGSAP(()=>{
         gsap.set(".menu-link-item-holder", {
-            y:75
+            y:75,
+            autoAlpha:0,
         })
 
         tl.current = gsap.timeline({paused:true});
@@ -68,6 +69,7 @@ const Navbar = () => {
             ease: "power4.inOut"
         }).to(".menu-link-item-holder", {
             y:0,
+            autoAlpha:1,
             duration:1,
             stagger: 0.1,
             ease: "power4.out",
@@ -93,8 +95,8 @@ const Navbar = () => {
             <div className="font-paquito menu-overlay fixed top-0 left-0 w-[30vw] h-[100vh] bg-black z-[150] flex flex-col justify-center items-center"
             style={{clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%"}}>
                 {menuLinks.map((link, index)=>(
-                    <div className="menu-link-item-holder relative text-white">
-                        <Link href={link.path} key={index}>
+                    <div key={index} className="menu-link-item-holder relative text-white text-3xl">
+                        <Link href={link.path} >
                             {link.label}
                         </Link>
                     </div>
