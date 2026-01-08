@@ -17,7 +17,7 @@ const Paquito_Medium = LocalFont({
 
 
 export const metadata: Metadata = {
-    title: "Hermanos Gutierrez - South America Tour 2026",
+    title: "Hermanos Gutierrez - South America tour 2026",
     description: "UPCOMING TOUR IN SOUTH AMERICA 2026",
 };
 
