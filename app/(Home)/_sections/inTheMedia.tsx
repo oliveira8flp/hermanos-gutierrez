@@ -12,12 +12,12 @@ const InTheMedia = () => {
                 <div className="flex flex-col justify-center items-start w-[49%]">
                     <Image src="/images/video-on-midia1.png" alt="Interview with Jimmy Kimmel" width ={500} height = {500}></Image>
                     <h2 className="font-paquito text-3xl w-[60%]">Hermanos Gutierrez in Jimmy Kimmel Live!</h2>
-                    <Button text="watch" color="bg-[#8A9D49]" textColor="text-white" width="w-[140px]" />
+                    <Button text="watch" color="bg-[#8A9D49]" color2="bg-black" textColor="text-white" width="w-[140px]" />
                 </div>
                 <div className="flex flex-col justify-center items-start w-[49%]">
                     <Image src="/images/video-on-midia2.png" alt="Interview with Jimmy Kimmel" width ={520} height = {550}></Image>
                     <h2 className="font-paquito text-3xl w-[60%]">Hermanos Gutierrez in SoCal Sound!</h2>
-                    <Button text="watch" color="bg-[#8A9D49]" textColor="text-white" width="w-[140px]"/>
+                    <Button text="watch" color="bg-[#8A9D49]" color2="bg-black" textColor="text-white" width="w-[140px]"/>
                 </div>
             </div>
         </section>

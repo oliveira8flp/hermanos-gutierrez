@@ -87,9 +87,9 @@ const Navbar = () => {
     };
 
     return (
-        <div className="w-full justify-center center-items Navbar  fixed top-0 left-0 z-101 pt-5" ref={navRef}>
-            <nav onClick ={toggleButton} className="w-[100%] gap-2 flex justify-center items-center navbar navbar-expand-lg">
-                <h2 className ="text-white font-paquito text-2xl cursor-pointer">{isMenuOpen ? "CLOSE" : "MENU"}</h2>
+        <div className="w-full justify-center center-items Navbar fixed top-0 left-0 z-101 pt-5" ref={navRef} >
+            <nav onClick ={toggleButton} className="cursor-pointer w-[100%] gap-2 flex justify-center items-center navbar navbar-expand-lg">
+                <h2 className ="text-white font-paquito text-2xl ">{isMenuOpen ? "CLOSE" : "MENU"}</h2>
                 <Image src="/images/white-thunderbird.png" alt="logo hermanos gutierrez" width={100} height={100}></Image>
             </nav>
             <div className="font-paquito menu-overlay fixed top-0 left-0 w-[30vw] h-[100vh] bg-black z-[150] flex flex-col justify-center items-center"
