@@ -29,7 +29,7 @@ body {
 
 html, body {
   overflow-x: hidden;
-  height: auto !important;     /* ⚠️ FIXED: Must be 100% to fill the screen */
+  height: auto !important;
   width: 100%;
   margin: 0;
   padding: 0;
