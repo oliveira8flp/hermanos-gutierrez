@@ -4,7 +4,8 @@ import LocalFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/app/_components/footer";
 import BlackNavBar from "@/app/_components/black-navBar";
-import SmoothScrolling from "@/app/_components/SmoothScrolling";
+import SmoothScrolling from "@/app/_components/smoothScrolling";
+import Cursor from "@/app/_components/cursor";
 
 const Paquito_Medium = LocalFont({
     src: "./_fonts/Paquito-Medium.ttf",
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
     <body className={`${Bungee_Font.variable} ${Paquito_Medium.variable} antialiased p-0 m-0 box-border`}>
             <BlackNavBar/>
+            <Cursor />
             <SmoothScrolling />
             <main className=" w-[100%] min-h-[200vh]">
                 {children}
