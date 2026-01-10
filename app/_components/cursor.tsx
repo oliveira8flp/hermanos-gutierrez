@@ -19,7 +19,7 @@ const Cursor = () => {
 
         const checkHover = (e: MouseEvent) =>{
             const target = e.target as HTMLElement;
-            const isInteractive = target.closest("a, button, .hover-trigger, input");
+            const isInteractive = target.closest("a, button, .hover-trigger, input, menu, Navbar, nav");
 
             if(isInteractive){
                 gsap.to(cursorRef.current, {
