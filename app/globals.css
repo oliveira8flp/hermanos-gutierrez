@@ -34,3 +34,17 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+@media(hover: hover) and (pointer: fine) {
+  body{
+    cursor: none;
+  }
+
+  a, button, input, select{
+    cursor: none;
+  }
+
+  @media(hover: none){
+
+  }
+}
