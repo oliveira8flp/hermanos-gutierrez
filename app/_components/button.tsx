@@ -23,7 +23,7 @@ const Button = ({text, color,color2, textColor, width}: Props) => {
 
             }, {
                 yPercent: -100,
-                duration: 0.5,
+                duration: 0.3,
                 ease: "none",
                 paused: true,
             })
@@ -43,8 +43,8 @@ const Button = ({text, color,color2, textColor, width}: Props) => {
 
 
     return (
-        <div onMouseEnter = {mouseEnterButton} onMouseLeave ={mouseLeavesButton} ref={divButton} className="buttons h-[56px] relative flex flex-col overflow-hidden">
-            <div className="h-[56px] wrapper flex flex-col">
+        <div onMouseEnter = {mouseEnterButton} onMouseLeave ={mouseLeavesButton} ref={divButton} className=" buttons h-[56px] relative flex flex-col overflow-hidden">
+            <div className="cursor-pointer h-[56px] wrapper flex flex-col">
                 <button className={`${color} ${textColor} flex justify-center font-paquito ${width} flex p-3 text-2xl rounded-[4px]`}><Image src="/images/black-thunderbird-shadow 1.png" alt="logo hermanos gutierrez" width ={50} height ={30}></Image>{text}</button>
                 <button className={`${color2} ${textColor} flex justify-center font-paquito ${width} flex p-3 text-2xl rounded-[4px]`}><Image src="/images/black-thunderbird-shadow 1.png" alt="logo hermanos gutierrez" width ={50} height ={30}></Image>{text}</button>
             </div>

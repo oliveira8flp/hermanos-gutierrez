@@ -27,9 +27,10 @@ body {
 
 }
 
-html, body{
+html, body {
   overflow-x: hidden;
   height: auto !important;
-  position: relative;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }

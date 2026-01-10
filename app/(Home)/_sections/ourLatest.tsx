@@ -12,8 +12,8 @@ const OurLatest = () => {
             </div>
             <div className = "gap-2 banner4Right w-[48%] h-[90vh] flex flex-col justify-center items-end">
                 <YoutubeBackground absolute = "relative" videoId="Pmud5up0My0" height="h-[30vh]" width="w-[30vw]" lg_width="w-[15vw]" lg_height="h-[15vh]" />
-                <Button text="listen on spotify" color="bg-[#649288]" textColor="text-white" width="w-[280px]" />
-                <Button text="listen on youtube" color="bg-black" textColor="text-white" width="w-[280px]" />
+                <Button text="listen on spotify" color="bg-[#649288]" color2="bg-black" textColor="text-white" width="w-[280px]" />
+                <Button text="listen on youtube" color="bg-black" color2="bg-[#649288]" textColor="text-white" width="w-[280px]" />
             </div>
 
         </section>

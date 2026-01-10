@@ -92,7 +92,7 @@ const BlackNavBar = () => {
 
     return (
         <div ref={blackNavBar} className = "w-[100%] flex justify-center items-center fixed top-0 left-0 z-80 navbar navbar-expand-lg pt-5">
-            <nav  onClick = {toggleButton} className="blackNavBar gap-2 w-[100%] flex justify-center items-center">
+            <nav  onClick = {toggleButton} className="cursor-pointer blackNavBar gap-2 w-[100%] flex justify-center items-center">
                 <h2 className ="text-black font-paquito text-2xl">{menuOpen ? "CLOSE" : "MENU"}</h2>
                 <Image src="/images/black-thunderbird-shadow 1.png" alt="logo hermanos gutierrez" width={100} height={100}></Image>
             </nav>
@@ -100,7 +100,7 @@ const BlackNavBar = () => {
                  style ={{clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%"}}>
                 {menuLinks.map((link, index) =>(
                     <div key={index} className="menu-link-item-holder relative text-white text-3xl">
-                        <Link href={link.path} >
+                        <Link href={link.path}>
                             {link.label}
                         </Link>
                     </div>
