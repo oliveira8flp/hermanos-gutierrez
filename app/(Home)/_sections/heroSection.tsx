@@ -7,14 +7,20 @@ gsap.registerPlugin(ScrollTrigger);
 import YoutubeBackground from "@/app/_components/youtubeBackground";
 import Hero from "@/app/_components/hero";
 import Heads from "@/app/_components/heads";
-import {useRef} from "react"
+import {useRef, useState} from "react"
 import Navbar from "@/app/_components/navbar";
 import Image from "next/image";
+import {useLenis} from "lenis/react";
+import {useEffect} from "react";
 
 const HeroSection = () => {
 
     const mainContainer = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLDivElement>(null)
+    const lenis = useLenis()
+
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
     useGSAP(() =>{
 
@@ -22,7 +28,10 @@ const HeroSection = () => {
         const tl = gsap.timeline()
         const divs = document.querySelectorAll(".divBlack");
 
-        if(!mainContainer.current || !videoRef.current){return}
+        if(!mainContainer.current || !videoRef.current){return};
+
+        lenis?.stop();
+        lenis?.scrollTo(0, {immediate: true})
 
         tl.fromTo(".thunderbird", {
             autoAlpha: 0,
@@ -58,6 +67,7 @@ const HeroSection = () => {
                 start: "top top",
                 end: "+=100%",
                 pin: true,
+                pinSpacing: true,
                 markers: true,
                 onUpdate: (self)=>{
                     if(self.progress > tl2.progress()){
@@ -66,7 +76,7 @@ const HeroSection = () => {
                 }
         });
 
-    }, {scope: mainContainer})
+    }, {scope: mainContainer, dependencies: [lenis]})
 
     return (
         <div ref ={mainContainer} className="h-full w-full z-102 relative">
@@ -77,7 +87,7 @@ const HeroSection = () => {
                     <div className="divBlack z-100 bg-black w-[20vw] h-[100vh]"></div>
                     <div className="divBlack z-100 bg-black w-[20vw] h-[100vh]"></div>
                     <div className="divBlack z-100 bg-black w-[20vw] h-[100vh]"></div>
-                    <Image className="absolute z-101 thunderbird" src="/images/black-thunderbird-shadow 1.png" alt="Black Thunderbird" width={160} height={160}></Image>
+                    <Image className="absolute z-101 thunderbird" src="/images/black-thunderbird-shadow 1.png" alt="Black Thunderbird" width={100} height={100}></Image>
                 </div>
                 <div ref ={videoRef} className ="animated-video flex-wrap relative flex w-full h-screen justify-start items-start">
                     <Navbar />
