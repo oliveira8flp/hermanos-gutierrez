@@ -13,7 +13,11 @@ import Image from "next/image";
 import {useLenis} from "lenis/react";
 import {useEffect} from "react";
 
-const HeroSection = () => {
+interface Props{
+    onIntroComplete: () => void;
+}
+
+const HeroSection = ({onIntroComplete}: Props) => {
 
     const mainContainer = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLDivElement>(null)
@@ -51,6 +55,12 @@ const HeroSection = () => {
             delay: 0.75,
             duration: 2,
             ease: "easeInOut",
+            onComplete: () =>{
+                document.documentElement.style.overflow = "";
+                document.body.style.overflow = "";
+                lenis?.start();
+                onIntroComplete();
+            }
         })
 
         tl2.fromTo(videoRef.current, {
