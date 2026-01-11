@@ -28,13 +28,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
+
     <html lang="en">
-    <body className={`${Bungee_Font.variable} ${Paquito_Medium.variable} antialiased p-0 m-0 box-border`}>
+    <body className={`${Bungee_Font.variable} ${Paquito_Medium.variable} antialiased p-0 m-0 box-border no-scroll`}>
             <BlackNavBar/>
             <Cursor />
             <SmoothScrolling />
-            <main className=" w-[100%] min-h-[200vh]">
+            <main className="min-height-[100vh] w-full">
                 {children}
             </main>
             <Footer />

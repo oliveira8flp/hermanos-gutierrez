@@ -9,8 +9,8 @@ const Cursor = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() =>{
-        const xTo = gsap.quickTo(cursorRef.current, "x", {duration: 0.3, ease: "power3"});
-        const yTo = gsap.quickTo(cursorRef.current, "y", {duration: 0.3, ease: "power3"});
+        const xTo = gsap.quickTo(cursorRef.current, "x", {duration: 1, ease: "power3"});
+        const yTo = gsap.quickTo(cursorRef.current, "y", {duration: 1, ease: "power3"});
 
         const moveShape = (e: MouseEvent) => {
             xTo(e.clientX);
@@ -42,7 +42,7 @@ const Cursor = () => {
         window.addEventListener("mouseover", checkHover);
 
         return() => {
-            window.removeEventListener("mouseenter", moveShape);
+            window.removeEventListener("mousemove", moveShape);
             window.removeEventListener("mouseover", checkHover);
         }
 
@@ -51,11 +51,11 @@ const Cursor = () => {
 
     return (
         <div ref={cursorRef} className="fixed top-0 left-0 pointer-events-none z-[9999]">
-            <div className="absolute top-5 left-[-15]" style={{width: "60px", height: "60px", transform: "translate(-50%, -50%)"}}>
-                <Image src="/images/head_estevan.png" alt="Custom Cursor" width={60} height={60} className="w-full h-full object-contain" style={{mixBlendMode: "difference"}}/>
+            <div className="absolute top-5 left-[-15]" style={{width: "30px", height: "30px", transform: "translate(-50%, -50%)"}}>
+                <Image src="/images/head_estevan.png" alt="Custom Cursor" width={30} height={30} className="w-full h-full object-contain" style={{mixBlendMode: "difference"}}/>
             </div>
-            <div className ="absolute" style={{width: "60px", height: "60px", transform: "translate(-50%, -50%)"}}>
-                <Image src="/images/head_alejandro.png" alt="Custom Cursor" width={60} height={60} className="w-full h-full object-contain" style={{mixBlendMode: "difference"}}/>
+            <div className ="absolute" style={{width: "30px", height: "30px", transform: "translate(-50%, -50%)"}}>
+                <Image src="/images/head_alejandro.png" alt="Custom Cursor" width={30} height={30} className="w-full h-full object-contain" style={{mixBlendMode: "difference"}}/>
             </div>
         </div>
     )

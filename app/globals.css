@@ -29,22 +29,12 @@ body {
 
 html, body {
   overflow-x: hidden;
-  height: auto !important;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-@media(hover: hover) and (pointer: fine) {
-  body{
-    cursor: none;
-  }
-
-  a, button, input, select{
-    cursor: none;
-  }
-
-  @media(hover: none){
-
-  }
+.no-scroll{
+  overflow: hidden!important;
+  height: 100%;
 }
