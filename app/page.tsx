@@ -13,7 +13,7 @@ export default function Home() {
     const [intro, setIntro] = useState(false);
     return (
       <div className={`w-full ${intro ? "min-h-screen" : "h-screen"}`}>
-            <HeroSection />
+            <HeroSection onIntroComplete={() => setIntro(true)} />
             <NextTour/>
             <PhotoSection />
             <OurLatest />

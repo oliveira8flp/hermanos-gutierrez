@@ -13,14 +13,16 @@ import Image from "next/image";
 import {useLenis} from "lenis/react";
 import {useEffect} from "react";
 
-const HeroSection = () => {
+interface Props{
+    onIntroComplete: () => void;
+}
+
+const HeroSection = ({onIntroComplete}: Props) => {
 
     const mainContainer = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLDivElement>(null)
     const lenis = useLenis()
 
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
 
     useGSAP(() =>{
 
@@ -51,6 +53,10 @@ const HeroSection = () => {
             delay: 0.75,
             duration: 2,
             ease: "easeInOut",
+            onComplete: () =>{
+                lenis?.start();
+                onIntroComplete();
+            }
         })
 
         tl2.fromTo(videoRef.current, {
