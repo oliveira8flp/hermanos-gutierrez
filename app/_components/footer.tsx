@@ -29,8 +29,8 @@ const MenuLink = ({ text }: { text: string }) => {
 
     return(
         <div onMouseEnter={() => tl.current?.play()} onMouseLeave={() => tl.current?.reverse()} ref={container}>
-            <h2 className ="wrapped">{text}</h2>
-            <h2 className ="wrapped">{text}</h2>
+            <h2 className ="wrapped cursor-pointer">{text}</h2>
+            <h2 className ="wrapped cursor-pointer">{text}</h2>
         </div>
     )
 }

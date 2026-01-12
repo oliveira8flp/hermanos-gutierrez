@@ -31,9 +31,7 @@ const HeroSection = ({onIntroComplete}: Props) => {
         const divs = document.querySelectorAll(".divBlack");
 
         if(!mainContainer.current || !videoRef.current){return};
-
-        lenis?.stop();
-        lenis?.scrollTo(0, {immediate: true})
+        
 
         tl.fromTo(".thunderbird", {
             autoAlpha: 0,
