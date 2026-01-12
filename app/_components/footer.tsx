@@ -8,34 +8,35 @@ import {useRef} from "react";
 
 gsap.registerPlugin(SplitText);
 
+const MenuLink = ({ text }: { text: string }) => {
 
-const Footer = () => {
-
-    const music = new SplitText(".music", {type: "chars"});
-    const merch = new SplitText(".merch", {type: "chars"});
-    const photos = new SplitText(".photos", {type: "chars"});
     const tl = useRef<gsap.core.Tween>(null);
-    const ulAnimations = useRef<HTMLDivElement>(null);
+    const container = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
+        const split = new SplitText(".wrapped", {type: "chars", scope: container.current!});
 
-        tl.current = gsap.fromTo(".wrapped", {
-            yPercent:0
-        }, {
-            yPercent: 60,
+        tl.current = gsap.to(split.chars, {
+            yPercent: -100,
             duration: 0.3,
-            ease: "none"
+            ease: "power2.inOut",
+            stagger: 0.03,
         })
 
-    }, {scope:ulAnimations});
+        return() => split.revert()
 
-    const mouseEnterWrapper = () => {
-        tl.current?.play()
-    }
+    }, {scope:container});
 
-    const mouseLeavesWrapper = () => {
-        tl.current?.reverse()
-    }
+    return(
+        <div onMouseEnter={() => tl.current?.play()} onMouseLeave={() => tl.current?.reverse()} ref={container}>
+            <h2 className ="wrapped">{text}</h2>
+            <h2 className ="wrapped">{text}</h2>
+        </div>
+    )
+}
+
+
+const Footer = () => {
 
     return (
         <section className="Footer flex-wrap flex-row flex relative justify-end items-center bg-[#F5EBD0] w-full h-[80vh]">
@@ -44,10 +45,10 @@ const Footer = () => {
                 <h2 className="font-paquito text-3xl">Copyright 2026</h2>
             </div>
             <div className="flex flex-col justify-center items-center w-full h-[30vh]">
-                <ul ref={ulAnimations} className="font-paquito text-4xl flex flex-row gap-x-12">
-                    <li><div onMouseEnter={mouseEnterWrapper} onMouseLeave={mouseLeavesWrapper} className="wrapper overflow-hidden h-[40px]"><h2 className="music wrapped">MUSIC</h2><h2 className="music">MUSIC</h2></div></li>
-                    <li><div onMouseEnter={mouseEnterWrapper} onMouseLeave={mouseLeavesWrapper} className="wrapper overflow-hidden h-[40px]"><h2 className="merch wrapped"> MERCH</h2><h2 className="merch"> MERCH</h2></div></li>
-                    <li><div onMouseEnter={mouseEnterWrapper} onMouseLeave={mouseLeavesWrapper} className="wrapper overflow-hidden h-[40px]"><h2 className="photos wrapped">PHOTOS</h2><h2 className="photos">PHOTOS</h2></div></li>
+                <ul className="font-paquito text-4xl flex flex-row gap-x-12">
+                    <li><div className="wrapper overflow-hidden h-[40px]"><MenuLink text="MUSIC"/></div></li>
+                    <li><div className="wrapper overflow-hidden h-[40px]"><MenuLink text="MERCH"/></div></li>
+                    <li><div className="wrapper overflow-hidden h-[40px]"><MenuLink text="PHOTOS"/></div></li>
                 </ul>
             </div>
         </section>

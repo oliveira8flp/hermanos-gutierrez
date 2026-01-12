@@ -23,8 +23,6 @@ const HeroSection = ({onIntroComplete}: Props) => {
     const videoRef = useRef<HTMLDivElement>(null)
     const lenis = useLenis()
 
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
 
     useGSAP(() =>{
 
@@ -56,8 +54,6 @@ const HeroSection = ({onIntroComplete}: Props) => {
             duration: 2,
             ease: "easeInOut",
             onComplete: () =>{
-                document.documentElement.style.overflow = "";
-                document.body.style.overflow = "";
                 lenis?.start();
                 onIntroComplete();
             }
