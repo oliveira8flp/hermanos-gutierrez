@@ -6,8 +6,9 @@ import Footer from "@/app/_components/footer";
 import BlackNavBar from "@/app/_components/black-navBar";
 import SmoothScrolling from "@/app/_components/smoothScrolling";
 import Cursor from "@/app/_components/cursor";
+import SoundProvider from "@/app/_context/SoundContext";
 
-const Paquito_Medium = LocalFont({
+const Paquito_Medium = LocalFont({  
     src: "./_fonts/Paquito-Medium.ttf",
     variable: "--font-paquito",
 });const Bungee_Font = Bungee({
@@ -37,7 +38,9 @@ export default function RootLayout({
             <Cursor />
             <SmoothScrolling />
             <main className="min-height-[100vh] w-full">
-                {children}
+                <SoundProvider>
+                    {children}
+                </SoundProvider>
             </main>
             <Footer />
     </body>
