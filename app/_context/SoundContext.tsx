@@ -1,6 +1,8 @@
 "use client"
 import {createContext, useContext, useState, useEffect, useRef} from "react";
 import { Howl } from "howler";
+import {useGSAP} from "@gsap/react";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 type SoundContextType = {
     playTrack: (trackName: string) => void,
@@ -10,13 +12,14 @@ type SoundContextType = {
 const SoundContext = createContext<SoundContextType | null>(null);
 
 
+
 const SoundProvider = ({children} : {children: React.ReactNode}) => {
     const[unlocked, setUnlocked] = useState(false);
     const currentTrack = useRef<Howl | null>(null);
     const currentTrackName = useRef<string | null>(null);
 
     const playlist = useRef<{[key: string]: Howl}>({
-        hero: new Howl({src: [""], loop: true, volume: 0, html5:true}),
+        hero: new Howl({src: ["/audio/hermosa-drive.mp3"], loop: true, volume: 0, html5:true}),
         tour: new Howl({src: [""], loop:true, volume:0, html5:true}),
         photos: new Howl({src: [""], loop:true, volume:0, html5:true})
     });
@@ -31,10 +34,10 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
 
         const events = ["click", "touchstart", "keydown"]
         events.forEach(e=>
-            document.removeEventListener(e, unlockAudio));
+            document.addEventListener(e, unlockAudio));
 
         return() =>{
-            events.forEach(e=> document.addEventListener(e, unlockAudio));
+            events.forEach(e=> document.removeEventListener(e, unlockAudio));
         }
 
     }, [unlocked]);
@@ -58,7 +61,8 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
             currentTrackName.current = trackName;
         }
     }
-        const stopAll = () =>{
+
+    const stopAll = () =>{
             if(currentTrack.current){
                 currentTrack.current.fade(currentTrack.current.volume(), 0, 500);
                 setTimeout(()=> currentTrack.current?.stop(), 1000);
@@ -66,12 +70,17 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
             currentTrack.current = null;
         }
 
-
     return (
         <SoundContext.Provider value={{playTrack, stopAll}}>
             {children}
         </SoundContext.Provider>
     )
 }
-export const useSound = () => useContext(SoundContext);
+
+export const useSound = () => {
+    const context = useContext(SoundContext);
+    if(!context) throw new Error("UseSound must be used without SoundProvider");
+    return context;
+}
+
 export default SoundProvider
