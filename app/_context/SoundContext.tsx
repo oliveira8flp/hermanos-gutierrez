@@ -1,12 +1,11 @@
 "use client"
 import {createContext, useContext, useState, useEffect, useRef} from "react";
 import { Howl } from "howler";
-import {useGSAP} from "@gsap/react";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 type SoundContextType = {
     playTrack: (trackName: string) => void,
-    stopAll: () => void
+    stopAll: () => void,
+    unlockAudio: () => void
 };
 
 const SoundContext = createContext<SoundContextType | null>(null);
@@ -19,18 +18,24 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
     const currentTrackName = useRef<string | null>(null);
 
     const playlist = useRef<{[key: string]: Howl}>({
-        hero: new Howl({src: ["/audio/hermosa-drive.mp3"], loop: true, volume: 0, html5:true}),
-        tour: new Howl({src: [""], loop:true, volume:0, html5:true}),
-        photos: new Howl({src: [""], loop:true, volume:0, html5:true})
+        hero: new Howl({src: ["/audio/hermosa-drive.mp3"], loop: true, volume: 0, html5:false}),
+        tour: new Howl({src: ["/audio/hermosa-drive.mp3"], loop:true, volume:0, html5:false}),
+        photos: new Howl({src: ["/audio/hermosa-drive.mp3"], loop:true, volume:0, html5:false})
     });
 
-    useEffect(() => {
-        const unlockAudio = () =>{
-            if(unlocked) return;
-            const silence = new Howl({src: [""], volume:0});
-            silence.play();
-            setUnlocked(true);
+    const unlockAudio = () =>{
+        if(unlocked) return;
+        const ambient = playlist.current["hero"];
+        if(ambient){
+            ambient.play();
+            ambient.mute(true);
         }
+
+        setUnlocked(true);
+        console.log("🔊 Audio Engine Unlocked")
+    }
+
+    useEffect(() => {
 
         const events = ["click", "touchstart", "keydown"]
         events.forEach(e=>
@@ -43,8 +48,9 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
     }, [unlocked]);
 
     const playTrack = (trackName: string) => {
-        if(!unlocked) return;
+        if(!unlocked) {unlockAudio()};
         if(currentTrackName.current === trackName) return;
+        console.log("Attempting to play", trackName);
 
         const newSound = playlist.current[trackName];
 
@@ -55,6 +61,7 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
         }
 
         if(newSound) {
+            newSound.mute(false);
             newSound.play();
             newSound.fade(0, 1, 1000);
             currentTrack.current = newSound;
@@ -68,10 +75,11 @@ const SoundProvider = ({children} : {children: React.ReactNode}) => {
                 setTimeout(()=> currentTrack.current?.stop(), 1000);
             }
             currentTrack.current = null;
+            currentTrackName.current = null;
         }
 
     return (
-        <SoundContext.Provider value={{playTrack, stopAll}}>
+        <SoundContext.Provider value={{playTrack, stopAll, unlockAudio}}>
             {children}
         </SoundContext.Provider>
     )

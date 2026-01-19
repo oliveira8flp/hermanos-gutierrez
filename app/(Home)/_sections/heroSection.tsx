@@ -22,7 +22,13 @@ const HeroSection = ({onIntroComplete}: Props) => {
     const mainContainer = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLDivElement>(null);
     const lenis = useLenis();
-    const { playTrack } = useSound();
+    const { playTrack, unlockAudio } = useSound();
+
+    const handleStart = () =>{
+        unlockAudio();
+        setHasStarted(true);
+        playTrack("hero")
+    }
 
     useGSAP(() =>{
         if(!hasStarted) return;
@@ -31,7 +37,6 @@ const HeroSection = ({onIntroComplete}: Props) => {
         const tl = gsap.timeline()
         const divs = document.querySelectorAll(".divBlack");
 
-        playTrack("hero");
 
         if(!mainContainer.current || !videoRef.current){return};
         
@@ -88,7 +93,7 @@ const HeroSection = ({onIntroComplete}: Props) => {
     return (
         <div ref ={mainContainer} className="h-full w-full z-102 relative">
             {!hasStarted &&(<div className="fixed inset-0 z-[200] bg-black flex justify-center items-center w-[100%]">
-                    <button onClick={() => setHasStarted(true)} className="font-paquito text-white text-2xl pointer-events border border-white px-10 py-4 hover:bg-white hover:text-black transition-all">
+                    <button onClick={handleStart} className="font-paquito text-white text-2xl pointer-events border border-white px-10 py-4 hover:bg-white hover:text-black transition-all">
                         Allow the experience
                     </button>
             </div>)}
