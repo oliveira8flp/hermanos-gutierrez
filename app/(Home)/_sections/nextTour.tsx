@@ -1,8 +1,27 @@
 import Hero from "@/app/_components/hero";
 import Image from "next/image";
 import Button from "@/app/_components/button";
+import gsap from "gsap";
+import {useGSAP} from "@gsap/react";
+import {useSound} from "@/app/_context/SoundContext";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
+
+
 
 const NextTour = () => {
+    /*const { playTrack } = useSound();
+
+    useGSAP(() =>{
+        ScrollTrigger.create({
+            trigger: ".Banner2",
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => playTrack("tour"),
+            onEnterBack: () => playTrack("tour"),
+        })
+    }); */
+
     return (
         <section className="Banner2 flex-wrap flex relative bg-[#F5EBD0] w-[100vw] h-[130vh] pt-48">
             <div className="banner2left w-[49%] flex flex-col justify-center items-center">
