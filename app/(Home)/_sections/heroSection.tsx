@@ -7,33 +7,39 @@ gsap.registerPlugin(ScrollTrigger);
 import YoutubeBackground from "@/app/_components/youtubeBackground";
 import Hero from "@/app/_components/hero";
 import Heads from "@/app/_components/heads";
-import {useRef, useState} from "react"
+import {useState, useRef} from "react"
 import Navbar from "@/app/_components/navbar";
 import Image from "next/image";
 import {useLenis} from "lenis/react";
-import {useEffect} from "react";
+import {useSound} from "@/app/_context/SoundContext";
 
 interface Props{
     onIntroComplete: () => void;
 }
 
 const HeroSection = ({onIntroComplete}: Props) => {
-
+    const[hasStarted, setHasStarted] = useState(false);
     const mainContainer = useRef<HTMLDivElement>(null);
-    const videoRef = useRef<HTMLDivElement>(null)
-    const lenis = useLenis()
+    const videoRef = useRef<HTMLDivElement>(null);
+    const lenis = useLenis();
+    const { playTrack, unlockAudio } = useSound();
 
+    const handleStart = () =>{
+        unlockAudio();
+        setHasStarted(true);
+        playTrack("hero")
+    }
 
     useGSAP(() =>{
+        if(!hasStarted) return;
 
         const tl2 = gsap.timeline({paused:true});
         const tl = gsap.timeline()
         const divs = document.querySelectorAll(".divBlack");
 
-        if(!mainContainer.current || !videoRef.current){return};
 
-        lenis?.stop();
-        lenis?.scrollTo(0, {immediate: true})
+        if(!mainContainer.current || !videoRef.current){return};
+        
 
         tl.fromTo(".thunderbird", {
             autoAlpha: 0,
@@ -82,10 +88,15 @@ const HeroSection = ({onIntroComplete}: Props) => {
                 }
         });
 
-    }, {scope: mainContainer, dependencies: [lenis]})
+    }, {scope: mainContainer, dependencies: [lenis, hasStarted]});
 
     return (
         <div ref ={mainContainer} className="h-full w-full z-102 relative">
+            {!hasStarted &&(<div className="fixed inset-0 z-[200] bg-black flex justify-center items-center w-[100%]">
+                    <button onClick={handleStart} className="font-paquito text-white text-2xl pointer-events border border-white px-10 py-4 hover:bg-white hover:text-black transition-all">
+                        Allow the experience
+                    </button>
+            </div>)}
             <section  className="Banner1 relative bg-[#000000] w-[100vw] h-[100vh]">
                 <div className="overflow-hidden absolute w-[100vw] h-[100vh] flex justify-center items-center bg-[#F5EBD0]">
                     <div className="divBlack z-100 bg-black w-[20vw] h-[100vh]"></div>
