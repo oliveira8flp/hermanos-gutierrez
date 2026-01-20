@@ -6,7 +6,7 @@ const InTheMedia = () => {
     return (
         <section className ="Banner5 flex-wrap flex items-center justify-center relative bg-[#F5EBD0] w-full h-[140vh] pb-92">
             <div className = "flex justify-end w-full h-[50vh] items-end ">
-                <Hero dropShadow="drop-shadow-[-4px_6px_0px_rgba(138,157,73,1)]" text="In the Midia" color="text-black" width="w-[80%]" text_align="text-right" />
+                <Hero text_size = "text-[10rem]" text_sizeMobile="text-[2rem]" dropShadow="drop-shadow-[-4px_6px_0px_rgba(138,157,73,1)]" text="In the Midia" color="text-black" width="w-[80%]" text_align="text-right" />
             </div>
             <div className="flex flex-row h-[60vh] w-[80%] justify-center items-center">
                 <div className="flex flex-col justify-center items-start w-[49%]">

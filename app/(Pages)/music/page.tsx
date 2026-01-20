@@ -1,6 +1,12 @@
+import FirstSection from "@/app/(Pages)/music/_sections/firstSection";
+import SecondSection from "@/app/(Pages)/music/_sections/secondSection";
+
 const Music = () => {
     return (
-        <div>Music</div>
+        <main>
+            <FirstSection />
+            <SecondSection />
+        </main>
     )
 }
 export default Music
