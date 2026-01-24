@@ -15,6 +15,7 @@ const menuLinks = [
     {path: "merch", label: "Merch"},
     {path: "photos", label: "Photos"},
     {path: "news", label: "News"},
+    {path: "videos", label: "Videos"},
     {path: "tour", label: "Tour"},
     {path: "bio", label: "Bio"},
     {path: "contact", label: "Contact"},
