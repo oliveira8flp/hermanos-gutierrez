@@ -1,20 +1,21 @@
-"use client"
-
 import Image from "next/image"
 
 interface Props{
     imageSource:string;
     imageAlt:string;
     imageDescription:string;
-    imageYear: string;
+    imageYear?: string;
     widthText: string;
     alignText: string;
+    widthPhoto: string;
 }
 
-const AlbumBlock = ({imageSource, imageAlt, imageDescription, imageYear, widthText, alignText}: Props) => {
+const AlbumBlock = ({imageSource, imageAlt, imageDescription, imageYear, widthText, alignText, widthPhoto}: Props) => {
     return (
-        <div className="w-[49%] flex flex-col justify-center items-center">
-            <Image src={imageSource} alt={imageAlt} width={600} height={600} />
+        <div className={`${widthPhoto} flex flex-col justify-center items-center`}>
+            <div className={`overflow-hidden h-[80vh] flex justify-center items-center`}>
+                <Image src={imageSource} alt={imageAlt} width={600} height={600} />
+            </div>
             <h2 className={`font-paquito text-3xl ${widthText} ${alignText} text-black`}>{imageDescription}</h2>
             <h3 className={`font-paquito text-3xl ${widthText} ${alignText} text-black`} >{imageYear}</h3>
         </div>

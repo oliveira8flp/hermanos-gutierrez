@@ -18,6 +18,7 @@ const BlackNavBar = () => {
         {path: "news", label: "News"},
         {path: "tour", label: "Tour"},
         {path: "bio", label: "Bio"},
+        {path: "videos", label: "Videos"},
         {path: "contact", label: "Contact"},
     ]
 
